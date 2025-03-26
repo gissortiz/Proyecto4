@@ -1,0 +1,15 @@
+# node modules
+node_modules/
+
+# logs
+*.log
+
+# entorno
+.env
+
+# compilación
+dist/
+build/
+
+# sistema operativo y editores
+.vscode/

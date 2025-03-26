@@ -1,0 +1,19 @@
+{
+  "name": "proyecto4",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Gissella Ortiz",
+  "license": "ISC",
+  "description": "Proyecto de reservas hoteleras",
+  "dependencies": {
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2"
+  },
+  "devDependencies": {
+    "prettier": "^3.5.3"
+  }
+}
