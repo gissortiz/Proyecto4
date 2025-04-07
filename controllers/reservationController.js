@@ -1,8 +1,5 @@
 const reservationService = require('../service/reservationService');
 
-const reservations = [
-];
-
 const create = async (req, res) => {
     const reservation= req.body;
     
@@ -23,10 +20,9 @@ const findAll = async(req, res) => {
     });  
 }
 
-const findBy = (req, res) => {
-    reservation = reservations.find(reservation => reservation.id === parseInt(req.params.id))
-    res.status(200).json({
-        message: reservation != undefined ? 'Reserva encontrada' : 'Reserva no encontrada',  
+const findBy = async (req, res) => {
+    const reservation = await reservationService.readReservation(parseInt(req.params.id));
+    res.status(200).json({ 
         data: reservation
     });
 }
