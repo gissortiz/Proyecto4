@@ -1,0 +1,30 @@
+[
+  {
+    "id": 1,
+    "name": "Juan Perez",
+    "phone": 123456789,
+    "email": "juan@gmail.com",
+    "date": "2021-12-01",
+    "checkin": "2021-12-01",
+    "checkout": "2021-12-03",
+    "adults": 2,
+    "children": 1,
+    "room": "Single",
+    "status": "pending",
+    "roomnumber": 1
+  },
+  {
+    "id": 3,
+    "name": "Ana Lopez",
+    "phone": 1239547789,
+    "email": "ana@gmail.com",
+    "date": "2025-12-01",
+    "checkin": "2025-12-01",
+    "checkout": "2025-12-03",
+    "adults": 2,
+    "children": 3,
+    "room": "double",
+    "status": "pending",
+    "roomnumber": 4
+  }
+]
