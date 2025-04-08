@@ -22,19 +22,24 @@ const findAll = async(req, res) => {
 
 const findBy = async (req, res) => {
     const reservation = await reservationService.readReservation(parseInt(req.params.id));
-    res.status(200).json({ 
-        data: reservation
-    });
-}
-
-const update = (req, res) => {
-    const reservation = reservations.find(reservation => reservation.id === parseInt(req.params.id));
     if (reservation) {
-        const index = reservations.indexOf(reservation);
-        reservations[index] = req.body;
+        res.status(200).json({
+            data: reservation,
+            message: 'Reserva encontrada'
+        });
+    } else {
+            res.status(404).json({
+                message: 'Reserva no encontrada'
+            });
+        }
+    };
+
+const update = async (req, res) => {
+    const reservation = await reservationService.updateReservation(parseInt(req.params.id), req.body);
+    if (reservation) {
         res.status(200).json({
             message: 'Reserva actualizada exitosamente',
-            data: reservations[index]
+            data: reservation
         });
     } else {
         res.status(404).json({
@@ -45,10 +50,9 @@ const update = (req, res) => {
 }
 
 const deleteOne = (req, res) => {
-const reservation = reservations.find(reservation => reservation.id === parseInt(req.params.id));
+    const id = parseInt(req.params.id);
+    const reservation = reservationService.deleteReservation(id);
     if (reservation) {
-        const index = reservations.indexOf(reservation);
-        reservations.splice(index, 1);
         res.status(200).json({
             message: 'Reserva eliminada exitosamente',
             data: reservation
@@ -58,6 +62,7 @@ const reservation = reservations.find(reservation => reservation.id === parseInt
             message: 'Reserva no encontrada'
         });
     }
+ 
 }
 
 
