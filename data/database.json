@@ -9,9 +9,11 @@
     "checkout": "2021-12-03",
     "adults": 2,
     "children": 1,
-    "room": "Single",
+    "numberGuests": 3,
+    "roomType": "Single",
     "status": "pending",
-    "roomnumber": 1
+    "roomnumber": 1,
+    "hotel": "Marriott"
   },
   {
     "id": 3,
@@ -23,8 +25,10 @@
     "checkout": "2025-12-03",
     "adults": 2,
     "children": 3,
-    "room": "double",
+    "numberGuests": 5,
+    "roomType": "double",
     "status": "pending",
-    "roomnumber": 9
+    "roomnumber": 9,
+    "hotel": "Hilton"
   }
 ]

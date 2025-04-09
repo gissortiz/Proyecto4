@@ -7,7 +7,7 @@ async function readReservations  ()  {
 
         return JSON.parse(data);
     } catch (error) {
-        console.error('Hubo un error hay leer las reservaciones: ', error);
+        console.error('Hubo un error al leer las reservaciones: ', error);
         return [];
     }
 }
@@ -32,7 +32,7 @@ async function readReservation(id){
         if (reservation) {
             return reservation;
         } else {
-            console.error('No se encontró la reservación con el id: ', id);
+            console.error('readReservation: No se encontró la reservación con el id: ', id);
             return null;
         }
     }
@@ -51,7 +51,7 @@ async function updateReservation(id, reservation) {
             await fs.promises.writeFile(path.join(__dirname, '../data/database.json'), JSON.stringify(reservations, null, 2));
             return reservation;
         } else {
-            console.error('No se encontró la reservación con el id: ', id);
+            console.error('updateReservation: No se encontró la reservación con el id: ', id);
             return null;
         }
     }
@@ -75,9 +75,17 @@ async function deleteReservation(id) {
         }
     }
     catch (error) {
-        console.error('Hubo un error al eliminar la reservación: ', error);
+        console.error('deleteReservation: Hubo un error al eliminar la reservación: ', error);
         return null;
     } 
+}
+
+async function getHotels() {
+    return [
+        { id: 1, name: 'Hotel 1', location: 'Location 1' },
+        { id: 2, name: 'Hotel 2', location: 'Location 2' },
+        { id: 3, name: 'Hotel 3', location: 'Location 3' }
+    ];
 }
 
 
@@ -86,5 +94,6 @@ module.exports = {
     writeReservations,
     readReservation,
     updateReservation,
-    deleteReservation
+    deleteReservation,
+    getHotels
 }

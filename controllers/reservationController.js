@@ -1,5 +1,6 @@
 const reservationService = require('../service/reservationService');
 
+
 const create = async (req, res) => {
     const reservation= req.body;
     
@@ -65,12 +66,51 @@ const deleteOne = (req, res) => {
  
 }
 
+const hotelSearch = async (req, res) => {
+    const reservations = await reservationService.readReservations();
+    const { hotel, checkin, checkout, roomType, status, numberGuests } = req.query;
+    let filteredReservations = reservations;
+
+    if (hotel) {
+        filteredReservations = filteredReservations.filter(reservation => reservation.hotel === hotel);
+    } 
+    
+    if (checkin && checkout) {
+        filteredReservations = filteredReservations.filter(reservation => {
+            return new Date(reservation.checkin) >= new Date(checkin) && new Date(reservation.checkout) <= new Date(checkout);
+        });
+    }
+    
+    if (roomType) {
+        filteredReservations = filteredReservations.filter(reservation => reservation.roomType === roomType);
+    }
+
+    if (status) {
+        filteredReservations = filteredReservations.filter(reservation => reservation.status === status);
+    }
+    
+    if (numberGuests) {
+        filteredReservations = filteredReservations.filter(reservation => reservation.numberGuests === numberGuests);
+    }
+
+    if (hotel || checkin || checkout || roomType || status || numberGuests) {
+        res.status(200).json({
+            message: 'Reservas filtradas',
+            data: filteredReservations
+        });
+    } else {
+        res.status(400).json({
+            message: 'No se encontraron reservas'
+        });
+    }
+}
 
 module.exports = {
     create,
     findAll,
     findBy,
     update,
-    deleteOne
-
+    deleteOne,
+    hotelSearch
 }
+
