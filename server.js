@@ -5,6 +5,8 @@ const cors = require('cors');
 
 require('dotenv').config();// importando variables de entorno de .env
 const app = express();
+app.use(cors());
+
 const PORT = process.env.PORT;
 
 const swaggerOptions = { 
@@ -17,7 +19,8 @@ const swaggerOptions = {
         },
         servers: [ 
             {
-                url: `http://localhost:${PORT}`, 
+                url: `http://localhost:${PORT}`,
+                description: 'Servidor local',
             },
         ],
     },
@@ -29,7 +32,6 @@ app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 
 const reservationRoutes = require('./routes/reservationRoutes'); 
 
-app.use(cors());
 app.use(express.json()); //middleware para que el servidor pueda entender json
 app.use('/reservations', reservationRoutes); //publicando las rutas en el servidor 
 
