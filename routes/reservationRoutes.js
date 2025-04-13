@@ -84,29 +84,66 @@ router.get('/', reservationController.findAll);
  *           schema:
  *             type: object
  *             required:
- *               - hotel
+ *               - id
+ *               - name
+ *               - phone
+ *               - email
+ *               - date
  *               - checkin
  *               - checkout
- *               - guests
+ *               - adults
+ *               - children
+ *               - numberGuests
  *               - roomType
+ *               - status
+ *               - roomNumber
+ *               - hotel
  *             properties:
- *               hotel:
- *                 type: string
- *                 example: "Marriott"
- *               checkin:
- *                 type: string
- *                 format: date
- *                 example: "2023-10-01"
- *               checkout:
- *                 type: string
- *                 format: date
- *                 example: "2023-10-05"
- *               guests:
- *                 type: integer
- *                 example: 2
- *               roomType:
- *                 type: string
- *                 example: "double"
+ *                id:
+ *                  type: integer
+ *                  example: 
+ *                name:
+ *                  type: string
+ *                  example: "Juan Perez"
+ *                phone:
+ *                  type: string
+ *                  example: "123456789"
+ *                email:
+ *                  type: string
+ *                  example: "juan@gmail.com"
+ *                date:
+ *                  type: string
+ *                  format: date
+ *                  example: "2023-10-01"
+ *                checkin:
+ *                  type: string
+ *                  format: date
+ *                  example: "2023-10-01"
+ *                checkout:
+ *                  type: string
+ *                  format: date
+ *                  example: "2023-10-05"
+ *                adults:
+ *                  type: integer
+ *                  example: 2
+ *                children:
+ *                  type: integer
+ *                  example: 0
+ *                numberGuests:
+ *                  type: integer
+ *                  example: 2
+ *                status:
+ *                  type: string
+ *                  example: "confirmed"
+ *                roomNumber:
+ *                  type: integer
+ *                  example: 101
+ *                roomType:
+ *                  type: string
+ *                  example: "double"
+ *                hotel:
+ *                  type: string
+ *                  example: "Marriott"
  *     responses:
  *       201:
  *         description: Reservation created successfully
@@ -151,29 +188,62 @@ router.get('/:id', reservationController.findBy);
  *           schema:
  *             type: object
  *             required:
- *               - hotel
+ *               - name
+ *               - phone
+ *               - email
+ *               - date
  *               - checkin
  *               - checkout
- *               - guests
+ *               - adults
+ *               - children
+ *               - numberGuests
  *               - roomType
+ *               - status
+ *               - roomNumber
+ *               - hotel
  *             properties:
- *               hotel:
- *                 type: string
- *                 example: "Marriott"
- *               checkin:
- *                 type: string
- *                 format: date
- *                 example: "2023-10-01"
- *               checkout:
- *                 type: string
- *                 format: date
- *                 example: "2023-10-05"
- *               guests:
- *                 type: integer
- *                 example: 2
- *               roomType:
- *                 type: string
- *                 example: "double"
+ *                name:
+ *                  type: string
+ *                  example: "Juan Perez"
+ *                phone:
+ *                  type: string
+ *                  example: "123456789"
+ *                email:
+ *                  type: string
+ *                  example: "juan@gmail.com"
+ *                date:
+ *                  type: string
+ *                  format: date
+ *                  example: "2023-10-01"
+ *                checkin:
+ *                  type: string
+ *                  format: date
+ *                  example: "2023-10-01"
+ *                checkout:
+ *                  type: string
+ *                  format: date
+ *                  example: "2023-10-05"
+ *                adults:
+ *                  type: integer
+ *                  example: 2
+ *                children:
+ *                  type: integer
+ *                  example: 0
+ *                numberGuests:
+ *                  type: integer
+ *                  example: 2
+ *                status:
+ *                  type: string
+ *                  example: "confirmed"
+ *                roomNumber:
+ *                  type: integer
+ *                  example: 101
+ *                roomType:
+ *                  type: string
+ *                  example: "double"
+ *                hotel:
+ *                  type: string
+ *                  example: "Marriott"
  *     responses:
  *       201:
  *         description: Reservation created successfully
