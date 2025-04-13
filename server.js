@@ -1,6 +1,7 @@
 const express = require('express');
 const swaggerUi = require('swagger-ui-express');
 const swaggerJsDoc = require('swagger-jsdoc');
+const cors = require('cors');
 
 require('dotenv').config();// importando variables de entorno de .env
 const app = express();
@@ -28,6 +29,7 @@ app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 
 const reservationRoutes = require('./routes/reservationRoutes'); 
 
+app.use(cors());
 app.use(express.json()); //middleware para que el servidor pueda entender json
 app.use('/reservations', reservationRoutes); //publicando las rutas en el servidor 
 
