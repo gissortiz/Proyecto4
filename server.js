@@ -19,8 +19,12 @@ const swaggerOptions = {
         },
         servers: [ 
             {
-                url: `http://localhost:${PORT}`,
-                description: 'Servidor local',
+                url: 'http://localhost:3000',
+                description: 'Servidor local (desarrollo)',
+            },
+            {
+                url: 'https://proyecto4-d4d0.onrender.com',
+                description: 'Servidor en producción (Render)',
             },
         ],
     },
